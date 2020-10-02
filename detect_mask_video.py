@@ -12,6 +12,7 @@ import imutils
 import time
 import cv2
 import os
+import matplotlib.pyplot as plt
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
@@ -100,7 +101,7 @@ maskNet = load_model(args["model"])
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
 vs = VideoStream(src=0).start()
-time.sleep(2.0)
+#time.sleep(2.0)
 
 # loop over the frames from the video stream
 while True:
@@ -137,7 +138,7 @@ while True:
 	# show the output frame
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
-
+	
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
@@ -145,3 +146,4 @@ while True:
 # do a bit of cleanup
 cv2.destroyAllWindows()
 vs.stop()
+print('Mask detection working perfectly')
